@@ -102,9 +102,7 @@ def train_model(
 
     llm.model = get_peft_model(llm.model, lora_config)
 
-    # if llm.device == "cuda":
-    #     llm.model.enable_input_require_grads()
-    if hasattr(llm.model, "enable_input_require_grads"):
+    if llm.device == "cuda":
         llm.model.enable_input_require_grads()
 
     tokenized_trainset = TokenizedDataset(llm.tokenizer, trainset, format_example)
