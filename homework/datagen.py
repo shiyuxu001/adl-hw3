@@ -6,7 +6,7 @@ def generate_dataset(output_json: str, oversample: int = 10, temperature: float 
     from .data import Dataset, is_answer_valid
 
     dataset = Dataset("train")
-    model = CoTModel()
+    model = CoTModel('HuggingFaceTB/SmolLM2-1.7B-Instruct')
 
     questions = [dataset[i][0] for i in range(len(dataset))]
     correct_answers = [dataset[i][1] for i in range(len(dataset))]
